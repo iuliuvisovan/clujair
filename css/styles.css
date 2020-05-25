@@ -1,0 +1,152 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat';
+  flex-direction: column;
+  font-weight: 100;
+  padding: 0 50px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.cluj-outline {
+  width: 300px;
+  margin-bottom: -15px;
+  position: relative;
+  z-index: -1;
+}
+
+.neighborhood {
+  background-color: #9e9e9e;
+  transition: all 0.5s ease-in-out;
+  margin-top: 20px;
+  width: calc(100vw - 32px);
+  max-width: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.neighborhood .header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+  font-size: 24px;
+}
+
+.neighborhood .header .name {
+  font-weight: 700;
+}
+
+.body {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  color: #fff;
+  font-weight: 800;
+  flex-direction: column;
+  transition: all 1s ease-in-out;
+}
+
+.current-value {
+  position: relative;
+  z-index: 5;
+}
+
+.neighborhood .body img {
+  width: calc(100vw - 32px);
+  max-width: 500px;
+  height: 250px;
+  position: absolute;
+  top: 50px;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+}
+
+.neighborhood:hover img {
+  opacity: 0.75;
+}
+
+.neighborhood .info {
+  opacity: 0.001;
+  position: relative;
+  z-index: 5;
+  font-size: 18px;
+  height: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.neighborhood:hover .info {
+  opacity: 1;
+  height: 50px;
+}
+
+.info {
+  font-weight: 100;
+}
+
+.progress-bar-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: -75px;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 20px;
+  border-radius: 100px;
+  border: 1px solid #fffb;
+  background: #fff4;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress {
+  width: 75%;
+  height: 100%;
+  position: relative;
+}
+
+.progress-bar-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  position: absolute;
+  width: 55px;
+  height: 20px;
+  left: 8px;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.progress-value {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  position: absolute;
+  width: 55px;
+  height: 20px;
+  right: 8px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.progress-bar-max-value {
+  width: 106px;
+}
