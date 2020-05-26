@@ -106,7 +106,7 @@ const neighbourhoods = [
   {
     id: 'plopilor',
     name: 'Plopilor',
-    imageUrl: 'https://i0.wp.com/cluju.ro/wp-content/uploads/2018/01/13475165_1800244116865752_2793115031474893207_o.jpg?fit=940%2C528&ssl=1',
+    imageUrl: 'https://cdn.cluj.com/cluj/octavian2k-zoom-750x380.jpg',
     deviceIds: ['160000CB'],
     shouldShow: true,
   },
@@ -114,6 +114,7 @@ const neighbourhoods = [
     id: 'manastur',
     name: 'Mănăștur',
     deviceIds: ['160000CA'],
+    shouldShow: true,
     imageUrl: 'https://i0.wp.com/cluju.ro/wp-content/uploads/2018/01/13475165_1800244116865752_2793115031474893207_o.jpg?fit=940%2C528&ssl=1',
   },
   {
