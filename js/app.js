@@ -4,6 +4,11 @@ async function getAndDisplayData() {
   drawNeighborhoods();
   await getAndPopulateClujDevices();
   drawNeighborhoods();
+
+  setInterval(async () => {
+    await getAndPopulateClujDevices();
+    drawNeighborhoods();
+  }, 10 * 1000);
 }
 
 function drawNeighborhoods() {
