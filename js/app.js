@@ -128,7 +128,7 @@ const neighbourhoods = [
     id: 'bunaziua',
     name: 'Bună Ziua',
     deviceIds: ['160000D3', '160000A2', '160000A5'],
-    imageUrl: 'https://ochiulclujean.ro/wp-content/uploads/2020/05/97993445_2628164784063791_8408341605198594048_n-960x640.jpg',
+    imageUrl: 'https://eclujeanul.ro/wp-content/uploads/2020/05/modernizare-strada-buna-ziua.jpg',
     shouldShow: true,
   },
   {
