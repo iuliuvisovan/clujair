@@ -49,27 +49,36 @@ async function getAndPopulateClujDevices() {
 
 function getAirQualityForNeighbourhood(neighbourhoodId) {
   const deviceIdsInNeighbourhood = neighbourhoods.find((x) => x.id == neighbourhoodId).deviceIds;
-  const devicesInNeighbourhood = allClujDevices.filter((x) => deviceIdsInNeighbourhood.includes(x.id));
+  const sensorsInNeighbourhood = allClujDevices.filter((x) => deviceIdsInNeighbourhood.includes(x.id));
 
-  if (!devicesInNeighbourhood.length) {
+  if (!sensorsInNeighbourhood.length) {
     return '';
   }
 
-  let sumForNeighbourhood = 0;
+  let summedSensorGrades = 0;
 
-  devicesInNeighbourhood.forEach(({ avg_pm1, avg_pm25, avg_pm10 }) => {
-    const valueForThisSenson = +avg_pm25;
+  sensorsInNeighbourhood.forEach((sensor) => {
+    const { avg_pm1, avg_pm25, avg_pm10 } = sensor;
+    // const avg_pm1 = 20;
+    // const avg_pm25 = 25;
+    // const avg_pm10 = 40;
 
-    sumForNeighbourhood += valueForThisSenson;
+    const pm1Percentage = (+avg_pm1 / 20) * 10;
+    const pm25Percentage = (+avg_pm25 / 25) * 10;
+    const pm10Percentage = (+avg_pm10 / 40) * 10;
+
+    const pm1Contribution = 0.2 * pm1Percentage;
+    const pm25Contribution = 0.2 * pm25Percentage;
+    const pm10Contribution = 0.2 * pm10Percentage;
+
+    const valueForSensor = 10 - (pm1Contribution + pm25Contribution + pm10Contribution);
+
+    summedSensorGrades += valueForSensor;
   });
 
-  const neighbourHoodValue = sumForNeighbourhood / devicesInNeighbourhood.length;
+  const averagedGradeForAllSensors = summedSensorGrades / sensorsInNeighbourhood.length;
 
-  var currentValue = neighbourHoodValue;
-
-  const grade = 10 - currentValue / 10;
-
-  return grade.toFixed(1);
+  return averagedGradeForAllSensors.toFixed(1);
 }
 
 function getPmAveragesForNeighborhood(neighbourhoodId) {
@@ -82,7 +91,12 @@ function getPmAveragesForNeighborhood(neighbourhoodId) {
     pm10: 0,
   };
 
-  devicesInNeighbourhood.forEach(({ avg_pm1, avg_pm25, avg_pm10 }) => {
+  devicesInNeighbourhood.forEach((sensor) => {
+    const { avg_pm1, avg_pm25, avg_pm10 } = sensor;
+    // const avg_pm1 = 20;
+    // const avg_pm25 = 25;
+    // const avg_pm10 = 40;
+
     averages.pm1 += +avg_pm1;
     averages.pm25 += +avg_pm25;
     averages.pm10 += +avg_pm10;
@@ -142,13 +156,13 @@ getAndDisplayData();
 
 function getHtmlForNeighbourhood({ id, name, value, imageUrl, pm1, pm25, pm10 }) {
   return `
-    <div class="neighborhood" id="${id}" style="background-color: ${getColor(value)}">
+  <a href="https://www.uradmonitor.com/" target="_blank" class="neighborhood" id="${id}" style="background-color: ${getColor(value)}">
     <div class="header">
       Cartierul&nbsp;
       <span class="name">${name}</span>
     </div>
     <div class="body">
-      <span class="current-value">${value}</span>
+      <span class="current-value">${value}<span class="max-grade">/10</span></span>
       <div class="info">
         ${getHtmlForProgressBar({ name: 'PM1.0', value: pm1, legalValue: 20 })}
         ${getHtmlForProgressBar({ name: 'PM2.5', value: pm25, legalValue: 25 })}
@@ -161,7 +175,7 @@ function getHtmlForNeighbourhood({ id, name, value, imageUrl, pm1, pm25, pm10 })
         alt="Cartierul ${name}"
       />
     </div>
-  </div>
+  </a>
     `;
 }
 
@@ -174,7 +188,7 @@ function getHtmlForProgressBar({ name, value, legalValue }) {
   return `
     <div class="progress-bar-wrapper">
       <div class="progress-bar">
-        <div class="progress" style="background-color: ${getColor(13 - (value / legalValue) * 10)}; width: ${percentage}%">
+        <div class="progress" style="background-color: ${getColor(13 - (value / legalValue) * 10)}; width: ${percentage > 100 ? 100 : percentage}%">
           <div class="progress-value">
             ${(value || 0).toFixed(1)}
           </div>

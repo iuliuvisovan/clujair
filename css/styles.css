@@ -1,17 +1,21 @@
 html,
 body {
   overflow-x: hidden;
+  font-family: 'Montserrat';
 }
 
 .page-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat';
   flex-direction: column;
   font-weight: 100;
   text-align: center;
   padding-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
 }
 
 h2 {
@@ -200,4 +204,16 @@ h2 {
   display: inline-block;
   margin-top: -3px;
   margin-left: 2px;
+}
+
+.max-grade {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  font-size: 18px;
+  transition: width 0.2s ease-in-out;
+}
+
+.neighborhood:hover .max-grade {
+  width: 27px;
 }
