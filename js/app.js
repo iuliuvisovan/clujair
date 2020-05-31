@@ -188,7 +188,7 @@ function getHtmlForProgressBar({ name, value, legalValue }) {
   return `
     <div class="progress-bar-wrapper">
       <div class="progress-bar">
-        <div class="progress" style="background-color: ${getColor(13 - (value / legalValue) * 10)}; width: ${percentage > 100 ? 100 : percentage}%">
+        <div class="progress" style="background-color: ${getColor(12 - (value / legalValue) * 10)}; width: ${percentage > 100 ? 100 : percentage}%">
           <div class="progress-value">
             ${(value || 0).toFixed(1)}
           </div>
