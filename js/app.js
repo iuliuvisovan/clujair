@@ -129,13 +129,13 @@ const neighbourhoods = [
     name: 'Mănăștur',
     deviceIds: ['160000CA'],
     shouldShow: true,
-    imageUrl: 'https://i0.wp.com/cluju.ro/wp-content/uploads/2018/01/13475165_1800244116865752_2793115031474893207_o.jpg?fit=940%2C528&ssl=1',
+    imageUrl: 'img/cartiere/manastur.jpg',
   },
   {
     id: 'europa',
     name: 'Europa',
     deviceIds: ['160000FA', '160000C6', '820001CF'],
-    imageUrl: 'https://i.imgur.com/K1YKwqc.png',
+    imageUrl: 'img/cartiere/europa.png',
     shouldShow: true,
   },
   {
@@ -156,7 +156,7 @@ getAndDisplayData();
 
 function getHtmlForNeighbourhood({ id, name, value, imageUrl, pm1, pm25, pm10 }) {
   return `
-  <a href="https://www.uradmonitor.com/" target="_blank" class="neighborhood" id="${id}" style="background-color: ${getColor(value)}">
+  <div class="neighborhood" id="${id}" style="background-color: ${getColor(value)}">
     <div class="header">
       Cartierul&nbsp;
       <span class="name">${name}</span>
@@ -171,11 +171,11 @@ function getHtmlForNeighbourhood({ id, name, value, imageUrl, pm1, pm25, pm10 })
       <div class="gradient"></div>
       <img
         src="${imageUrl}"
-        style="height: 280px;"
+        style="height: 250px;"
         alt="Cartierul ${name}"
       />
     </div>
-  </a>
+  </div>
     `;
 }
 

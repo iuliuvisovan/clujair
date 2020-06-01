@@ -2,6 +2,8 @@ html,
 body {
   overflow-x: hidden;
   font-family: 'Montserrat';
+  color: #4c4c4c;
+  margin: 0;
 }
 
 .page-wrapper {
@@ -23,7 +25,8 @@ h2 {
 }
 
 .cluj-outline {
-  width: 300px;
+  width: 340px;
+  margin-top: 25px;
   margin-bottom: -15px;
   position: relative;
   z-index: -1;
@@ -32,15 +35,15 @@ h2 {
 .neighborhoods-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100vw - 40px);
-  max-width: 1020px;
-  justify-content: space-between;
+  width: 100vw;
+  max-width: 1040px;
+  justify-content: center;
 }
 
 .neighborhood {
   background-color: #9e9e9e;
   transition: all 0.5s ease-in-out;
-  margin-top: 20px;
+  margin: 10px;
   width: calc(100vw - 32px);
   max-width: 500px;
   border-radius: 8px;
@@ -216,4 +219,57 @@ h2 {
 
 .neighborhood:hover .max-grade {
   width: 27px;
+}
+
+.usr-logo-fixed {
+  height: 70px;
+  position: absolute;
+  top: 35px;
+  left: calc(((100vw - (500px * 2 + 40px)) / 2) + 3px);
+}
+
+.usr-logo-static {
+  height: 50px;
+  display: none;
+}
+
+@media (max-width: 1039px) {
+  .usr-logo-fixed {
+    display: none;
+  }
+  .usr-logo-static {
+    display: inline-block;
+  }
+}
+
+.title {
+  display: inline-block;
+}
+
+@media (max-width: 375px) {
+  .title {
+    max-width: 224px;
+    text-align: right;
+  }
+}
+
+.logo-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100vw - 40px);
+  max-width: 500px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+@media (min-width: 1039px) {
+  .logo-title-wrapper {
+    justify-content: center;
+  }
+}
+
+.cluj-outline {
+  width: calc(100vw - 40px);
+  max-width: 370px;
+  margin-bottom: -20px;
 }
