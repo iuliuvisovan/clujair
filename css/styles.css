@@ -256,15 +256,16 @@ h2 {
 .logo-title-wrapper {
   display: flex;
   justify-content: space-between;
-  width: calc(100vw - 40px);
+  width: calc(100vw - 30px);
   max-width: 500px;
   align-items: center;
-  margin-top: 6px;
+  margin-top: 24px;
 }
 
 @media (min-width: 1039px) {
   .logo-title-wrapper {
     justify-content: center;
+    margin-top: 6px;
   }
 }
 
