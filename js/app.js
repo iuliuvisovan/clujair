@@ -135,14 +135,14 @@ const neighbourhoods = [
     id: 'europa',
     name: 'Europa',
     deviceIds: ['160000FA', '160000C6', '820001CF'],
-    imageUrl: 'img/cartiere/europa.png',
+    imageUrl: 'img/cartiere/europa.jpg',
     shouldShow: true,
   },
   {
     id: 'bunaziua',
     name: 'Bună Ziua',
     deviceIds: ['160000D3', '160000A2', '160000A5'],
-    imageUrl: 'https://eclujeanul.ro/wp-content/uploads/2020/05/modernizare-strada-buna-ziua.jpg',
+    imageUrl: 'img/cartiere/bunaziua.jpg',
     shouldShow: true,
   },
   {
