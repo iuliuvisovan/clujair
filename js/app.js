@@ -113,14 +113,14 @@ const neighbourhoods = [
   {
     id: 'grigorescu',
     name: 'Grigorescu',
-    imageUrl: 'https://www.clujlife.com/wp-content/uploads/2018/08/cartier-grigorescu1-1.jpg',
+    imageUrl: 'img/cartiere/grigorescu.jpg',
     deviceIds: ['160000C7'],
     shouldShow: true,
   },
   {
     id: 'plopilor',
     name: 'Plopilor',
-    imageUrl: 'https://cdn.cluj.com/cluj/octavian2k-zoom-750x380.jpg',
+    imageUrl: 'img/cartiere/plopilor.jpg',
     deviceIds: ['160000CB'],
     shouldShow: true,
   },
@@ -162,8 +162,8 @@ function getHtmlForNeighbourhood({ id, name, value, imageUrl, pm1, pm25, pm10 })
       <span class="name">${name}</span>
     </div>
     <div class="body">
-      <span class="current-value">${value}<span class="max-grade">/10</span></span>
-      <div class="info">
+      <span class="current-value">${value}<span class="max-grade">${pm1 ? '/10' : '...'}</span></span>
+      <div class="info" style="display: ${pm1 ? 'block' : 'none'}">
         ${getHtmlForProgressBar({ name: 'PM1.0', value: pm1, legalValue: 20 })}
         ${getHtmlForProgressBar({ name: 'PM2.5', value: pm25, legalValue: 25 })}
         ${getHtmlForProgressBar({ name: 'PM10', value: pm10, legalValue: 40 })}
