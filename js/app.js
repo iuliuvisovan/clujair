@@ -8,7 +8,7 @@ async function getAndDisplayData() {
   setInterval(async () => {
     await getAndPopulateClujDevices();
     drawNeighborhoods();
-  }, 10 * 1000);
+  }, 20 * 1000);
 }
 
 function drawNeighborhoods() {
