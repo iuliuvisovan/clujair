@@ -132,17 +132,17 @@ const neighbourhoods = [
     imageUrl: 'img/cartiere/manastur.jpg',
   },
   {
-    id: 'europa',
-    name: 'Europa',
-    deviceIds: ['160000FA', '160000C6', '820001CF'],
-    imageUrl: 'img/cartiere/europa.jpg',
-    shouldShow: true,
-  },
-  {
     id: 'bunaziua',
     name: 'Bună Ziua',
     deviceIds: ['160000D3', '160000A2', '160000A5'],
     imageUrl: 'img/cartiere/bunaziua.jpg',
+    shouldShow: true,
+  },
+  {
+    id: 'europa',
+    name: 'Europa',
+    deviceIds: ['160000FA', '160000C6', '820001CF'],
+    imageUrl: 'img/cartiere/europa.jpg',
     shouldShow: true,
   },
   {
