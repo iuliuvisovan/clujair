@@ -47,9 +47,21 @@ async function getAndPopulateClujDevices() {
   allClujDevices = devices.filter((x) => x.city.toLowerCase().includes('cluj'));
 }
 
+function isBroken(sensor) {
+  const { avg_pm1, avg_pm25, avg_pm10 } = sensor;
+
+  if (avg_pm1 > 100 || avg_pm25 > 100 || avg_pm10 > 100) {
+    return true;
+  }
+}
+
 function getAirQualityForNeighbourhood(neighbourhoodId) {
   const deviceIdsInNeighbourhood = neighbourhoods.find((x) => x.id == neighbourhoodId).deviceIds;
-  const sensorsInNeighbourhood = allClujDevices.filter((x) => deviceIdsInNeighbourhood.includes(x.id));
+  const sensorsInNeighbourhood = allClujDevices.filter((x) => deviceIdsInNeighbourhood.includes(x.id)).filter((x) => !isBroken(x));
+
+  if (!sensorsInNeighbourhood.length) {
+    return '';
+  }
 
   if (!sensorsInNeighbourhood.length) {
     return '';
@@ -59,9 +71,6 @@ function getAirQualityForNeighbourhood(neighbourhoodId) {
 
   sensorsInNeighbourhood.forEach((sensor) => {
     const { avg_pm1, avg_pm25, avg_pm10 } = sensor;
-    // const avg_pm1 = 20;
-    // const avg_pm25 = 25;
-    // const avg_pm10 = 40;
 
     const pm1Percentage = (+avg_pm1 / 20) * 10;
     const pm25Percentage = (+avg_pm25 / 25) * 10;
@@ -83,7 +92,7 @@ function getAirQualityForNeighbourhood(neighbourhoodId) {
 
 function getPmAveragesForNeighborhood(neighbourhoodId) {
   const deviceIdsInNeighbourhood = neighbourhoods.find((x) => x.id == neighbourhoodId).deviceIds;
-  const devicesInNeighbourhood = allClujDevices.filter((x) => deviceIdsInNeighbourhood.includes(x.id));
+  const devicesInNeighbourhood = allClujDevices.filter((x) => deviceIdsInNeighbourhood.includes(x.id)).filter(x => !isBroken(x));
 
   let averages = {
     pm1: 0,
