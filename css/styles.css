@@ -110,12 +110,12 @@ h2 {
   height: 250px;
   position: absolute;
   top: 50px;
-  opacity: 0.5;
-  transition: all 0.5s ease-in-out;
+  opacity: 0.75;
+  transition: all 0.35s ease-in-out;
 }
 
 .neighborhood:hover img {
-  opacity: 0.75;
+  opacity: 1;
 }
 
 .neighborhood:hover .gradient {
